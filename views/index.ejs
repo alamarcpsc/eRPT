@@ -1,0 +1,34 @@
+<!--
+file:	index.ejs
+author: Richard J. Riley
+date:	12/16/15 (updated)
+desc:	Login page HTML with DEMO section included for presentation
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Will need to restate once CSS files have a directory -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <title>eRPT Login | Gonzaga University</title>
+</head>
+
+<body>
+<div id="login-holder">
+    <br>
+    <img id="logo" src="/images/eRPT_2.2.png">
+    <br>
+    <form class="center" action="/" method="post">
+        <br>
+        <input type="text" name="username" maxlength="64" autofocus placeholder="Username" class="StyleTxtField" required>
+        <br>
+        <input type="password" name="password" maxlength="64" placeholder="Password" class="StyleTxtField" required>
+        <br>
+        <br>
+        <input style="background-color: #993333; color: white;" type="submit" value="Submit">
+        <br>
+        <br>
+    </form>
+</div>
+</body>
+</html>
