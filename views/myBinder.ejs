@@ -1,0 +1,84 @@
+<!--
+file:	myBinder.ejs
+author:
+date:	January 14, 2016 (updated)
+desc:
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Binder</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/table.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id=NavBar>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id=ContentRegion>
+    <div class=container>
+        <div class=pricing-table>
+            <div class=pricing-table-header>
+                <h3>2013</h3>
+            </div>
+            <div class=pricing-table-features>
+                <p><strong>Access:</strong> Read Only</p>
+            </div>
+            <div class=pricing-table-sign-up>
+                <p><a href="/2013Binder">View</a></p>
+            </div>
+        </div>
+
+        <div class=pricing-table>
+            <div class=pricing-table-header>
+                <h3>2014</h3>
+            </div>
+            <div class=pricing-table-features>
+                <p><strong>Access:</strong> Read Only</p>
+            </div>
+            <div class=pricing-table-sign-up>
+                <p><a href=>View</a></p>
+            </div>
+        </div>
+
+        <div class=pricing-table>
+            <div class=pricing-table-header>
+                <h3>2015</h3>
+            </div>
+            <div class=pricing-table-features>
+                <p><strong>Access:</strong> Open</p>
+            </div>
+            <div class=pricing-table-sign-up>
+                <p><a href=>View | Edit</a></p>
+            </div>
+        </div>
+
+        <div class=pricing-table>
+            <div class=pricing-table-header>
+                <h3>[ + ]</h3>
+            </div>
+            <div class=pricing-table-features>
+                <p><strong>Access:</strong> Open</p>
+            </div>
+            <div class=pricing-table-sign-up>
+                <p><a href="/2013Binder">View</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
