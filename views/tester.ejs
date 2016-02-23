@@ -1,0 +1,63 @@
+<!--
+file:   home.html
+author: Tara Hanson
+date:   January 14, 2016
+desc:   HTML page for the Welcome/Home page of our website
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id=ContentRegion>
+   <!-- Test 1:
+    <br>
+    <%- JSON.stringify(recordset)%>
+    <br>
+    -->
+
+    <br>
+    <table>
+    <tr>
+    <td>
+        binder_ID
+    </td>
+    <td>
+        binder_Name
+    </td>
+    </tr>
+    <% for(var i = 0; i < recordset.length; i++) { %>
+        <tr>
+        <td><%= recordset[i].binder_ID%></td>
+        <td><%= recordset[i].binder_Name%></td>
+        </tr>
+    <% } %>
+    </table>
+</div>
+</body>
+
+<script>
+    var dbconnection = require('./sql/dbconnection.js');
+
+</script>
+
+</html>
