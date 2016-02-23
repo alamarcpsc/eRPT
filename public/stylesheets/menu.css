@@ -1,0 +1,54 @@
+/*
+authors: Eric Jobes & Richard Riley
+date:	 2/13/2016
+*/
+
+nav ul {
+	overflow:auto;
+	min-width:900px;
+	height:48px;
+	margin:0;
+	padding:0;
+	background-color:#003f72;
+}
+
+nav ul li {
+    -webkit-border-radius: 0px;
+	list-style-type:none;
+	float:left;
+	display:block;
+	min-width:150px;
+	height:48px;
+	text-align:center;
+	line-height:43px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size:17px;	
+}
+
+nav ul li a
+{
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+nav ul >li:nth-last-child(2)
+{
+	float:right;
+}
+
+nav ul > li:last-child
+{
+    float:right;
+}
+
+nav ul li:hover
+{
+	background-color:#5fa2db;
+}
+
+nav ul li:hover a
+{
+	display:block;
+	color:#000000;
+	height:100%;
+}

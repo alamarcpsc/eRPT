@@ -1,0 +1,80 @@
+/*
+file:	login.css
+author:	Richard Riley
+date:	1/14/16 (updated)
+desc:	CSS page for login.html and includes link to
+		revised background photo (per MarComm talk)
+*/
+
+body {
+	background: url("/images/HemmingsonBackground.jpg") fixed center;
+    background-size: cover;
+    background-repeat: no-repeat;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+p {
+	font-size: 14px;
+	color: #181818;
+}
+
+#login-holder {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 4px;
+	margin: auto;
+	width: 356px;
+	background: linear-gradient(rgba(241, 241, 241, 0.8),rgba(241, 241, 241, 0.85),rgba(241, 241, 241, 0.95),rgba(241, 241, 241, 1),rgba(241, 241, 241, 1),rgba(241, 241, 241, 1),rgba(241, 241, 241, 1),rgba(241, 241, 241, 1),rgba(241, 241, 241, 1),rgba(241, 241, 241, 1),rgba(241, 241, 241, .95),rgba(241,241,241,0.90),rgba(241, 241, 241, .85),rgba(241, 241, 241, 0.8));
+	box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.8);
+}
+
+#logo {
+	display:block;
+	margin:auto;
+	width:248px;
+	height:152px;
+}
+
+.center {
+	text-align: center;
+}
+
+.StyleTxtField {
+	color: #181818;
+	background: none;
+	border-style: none;
+	border-bottom: 1px solid #555555;
+	line-height: 1.2;
+	font-size:15px;
+	width:58%;
+	height:auto;
+	padding-left:1px;
+	padding-right:1px;
+	font-family: Tahoma, Geneva, sans-serif;
+	
+}
+
+.submit {
+	background-color: #993333;
+	color: #FFFFFF;
+	font-size:14px;
+	text-decoration: none;
+	border-radius: 6px;
+	border:none;
+	opacity:0.95;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+.button {
+	background-color: #993333;
+	color: #FFFFFF;
+	font-size:14px;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: 6px;
+	border:none;
+	opacity:0.95;
+	font-family: Tahoma, Geneva, sans-serif;
+}
