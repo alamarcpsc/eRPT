@@ -1,0 +1,73 @@
+<!--
+file:	help.ejs
+author:
+date:	January 14, 2016 (updated)
+desc:
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Help</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id=ContentRegion>
+    <div id=ContentNormal>
+        <center><img src="/images/eRPT_2.2.png" width=124px height=71px"></center>
+        <div id="IntroParagraph">
+            <center><h1>Welcome to the Help Page!</h1></center>
+
+            <h2>Introduction</h2>
+            <p>Learning any new web application can be tricky, the goal of this page is to make the transition as seamless as possible for new users.
+                Below you will find various documentation on how to create a binder, add files to your binder, submit a binder for review as well as other functionalities.
+                Depending on what type of user you are (Applicant, Evaluator or Organizer) the various sections will be very helpful.</p>
+            <hr>
+
+            <h2>Creating a Binder</h2>
+            <p>In order to create a binder, please click on the My Binder tab at the top of the page.
+                You can also do this by clicking <a href="/myBinder">My Binder</a>
+                Once this is done, you will be able to create a new binder, or select from previous binders you have created in past years. For detailed instructions on
+                how to create a binder and what contents needed to be added to a specific binder, you can visit the binder help page by clicking
+                this <a href="/help">Help</a>
+            <hr>
+
+            <h2>Organizing a Binder</h2>
+            <p>If you are accessing the site as an Organizer you can select various binders that have been submitted
+                <a href="/organizer">Organizer</a> You can also navigate to the proper page via the tabs above, and selecting workbench.
+                These binders represented submitted faculty binders that are ready to passed on
+                to the proper evaluators within the eRPT site. If there is a binder that you are expecting to be there but is not, it is
+                possible that the binder has not yet been submitted for evaluation by the faculty member who it belongs to.</p>
+            <hr>
+
+            <h2>Evaluating a Binder</h2>
+            <p>If you are accessing the site as an Evaluator you can select various binders that are available for evaluation
+                <a href="/evaluation">Evaluation</a> You can also navigate to the proper page via the tabs above by selecting Evaluate.
+                These binders represented submitted faculty binders that are ready to evaluated for various positions.
+                If there is a binder that you are expecting to be there but is not, it is
+                possible that the binder has not yet been submitted for evaluation by the faculty member who it belongs to, or an Organizer
+                has not yet passed it on the all the evaluators that will be viewing the binder.</p>
+            <hr>
+            <h2>Additional Information</h2>
+            <p>If this section does not answer your question, then there are additional resources available to you.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
