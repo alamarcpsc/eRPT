@@ -1,0 +1,78 @@
+<!--
+file:	evaluation.ejs
+author:
+date:	January 14, 2016 (updated)
+desc:
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Evaluation</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/table.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id=ContentRegion>
+    <div class=container>
+        <div class="pricing-table">
+            <div class="pricing-table-header">
+                <h3>John Doe</h3>
+                <h3>2015</h3>
+            </div>
+            <div class="pricing-table-space"></div>
+            <div class="pricing-table-features">
+                <p><strong>Applying for:</strong> Reappointment</p>
+            </div>
+            <div class="pricing-table-sign-up">
+                <p><a href="/evaluationExample">Evaluate!</a></p>
+            </div>
+        </div>
+
+        <div class="pricing-table">
+            <div class="pricing-table-header">
+                <h3>Jane Doe</h3>
+                <h3>2015</h3>
+            </div>
+            <div class="pricing-table-space"></div>
+            <div class="pricing-table-features">
+                <p><strong>Applying for:</strong> Promotion</p>
+            </div>
+            <div class="pricing-table-sign-up">
+                <p><a href="">Evaluate!</a></p>
+            </div>
+        </div>
+
+        <div class="pricing-table">
+            <div class="pricing-table-header">
+                <h3>Deborah Jones</h3>
+                <h3>2015</h3>
+            </div>
+            <div class="pricing-table-space"></div>
+            <div class="pricing-table-features">
+                <p><strong>Applying for:</strong> Tenure</p>
+            </div>
+            <div class="pricing-table-sign-up">
+                <p><a href="">Evaluate!</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
