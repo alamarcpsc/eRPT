@@ -1,0 +1,47 @@
+<!--
+file:   home.html
+author: Tara Hanson
+date:   January 14, 2016
+desc:   HTML page for the Welcome/Home page of our website
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id=ContentRegion>
+    <div id=ContentNormal>
+        <center>
+            <img src="/images/eRPT_2.2.png" width=124px height=71px">
+            <h1>Welcome to Gonzaga University eRPT</h1>
+        </center>
+        <div id=IntroParagraph>
+            <h2>Introduction</h2>
+            <p>Welcome to Gonzaga University's electronic reappointment, promotion, and tenure application. This goal of this website is
+                to assist applicants and evaluators with the RPT process by simplifying binder creation and eliminating paper waste.  This
+                website was designed by a group of senior computer science students as part of their capstone project for the year of 2015-16,
+                with hopes to assist Gonzaga University in bettering the RPT process.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
