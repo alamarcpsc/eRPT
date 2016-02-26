@@ -54,8 +54,12 @@ html, body {
 iframe {
 	border:0px;
 	width:100%;
-	height:100%;
+	height:inherit;
 	min-height:621px;
+	position:relative;
+	display:none;
+	/*NEED TO FIGURE OUT HOW TO DYNAMICALLY PICK THE FIRST IFRAME
+	TO HAVE display:inline; vs. none. Opening works brilliantly.*/
 }
 
 h1 {
@@ -69,4 +73,25 @@ h2 {
 h3 {
 	font-size: 24px;
 	color:#FFFFFF;
+}
+
+table {
+	background-color:#f1f1f1;
+	table-layout:fixed;
+	width:100%;
+}
+
+td {
+	text-align:center;
+	word-wrap:break-word;
+}
+
+button {
+	background-color: #777777;
+	color: #FFFFFF;
+	font-size:14px;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: 3px;
+	border: none;
 }
