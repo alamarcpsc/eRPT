@@ -1,0 +1,321 @@
+<!--
+file:	filledBinderExample.ejs
+author:
+date:	January 14, 2016 (updated)
+desc:
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example Binder</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/alwaysOpenSidebar.css" rel="stylesheet">
+    <script src="/javascript/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/javascript/alwaysOpenSidebar.js"></script>
+</head>
+
+<body>
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id="ContentAndSidebarRegion">
+    <div id='cssmenu'>
+        <ul>
+            <li class='active has-sub'><a href='#'><span>Dean's Recommendation</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="deansRecButton" href='#'>[file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Chair Recommendation</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="chairRecButton" href='#'>[file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>Committee <br> Recommendation</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="commRecButton" href='#'>[file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>Prior Letters & Recommendation</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="priorLettersButton" href='#'>[file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                    <!--<li class='last'><a href='#'><span>File</span></a></li>
+                    <li class='last'><a href='#'><span>File</span></a></li>
+                    <li class='last'><a href='#'><span>File</span></a></li>-->
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>Self Eval & Personal Statement</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="selfEvalButton" href='#'>[file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>Current Resumé</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2"><a id="resumeButton" href='#'>[file name here].pdf</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><button>UPLOAD</button></td>
+                                        <td><button>REMOVE</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>List of Courses</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="listOfCoursesButton" href='#'>file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+
+                    <!--<li class='last'><a href='#'><span>Course ###</span></a></li>
+                    <li class='last'><a href='#'><span>Course ###</span></a></li>
+                    <li class='last'><a href='#'><span>Course ###</span></a></li>-->
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>Pro Dev Materials</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="proDevMatsButton" href='#'>file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>Letters</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="lettersButton" href='#'>file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                    <!--<li class='last'><a href='#'><span>File</span></a></li>
+                    <li class='last'><a href='#'><span>File</span></a></li>
+                    <li class='last'><a href='#'><span>File</span></a></li>-->
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>Student Evaluations</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="studentEvalsButton" href='#'>file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                    <!--<li class='last'><a href='#'><span>File</span></a></li>
+                    <li class='last'><a href='#'><span>File</span></a></li>
+                    <li class='last'><a href='#'><span>File</span></a></li>-->
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#' ><span>List of Supplemental Materials</span></a>
+                <ul>
+                    <li class='last'>
+                        <span>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td colspan="2"><a id="suppMatsButton" href='#'>file name here].pdf</a></td>
+                                </tr>
+                                <tr>
+                                    <td><button>UPLOAD</button></td>
+                                    <td><button>REMOVE</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                    <!--<li class='last'><a href='#'><span>File</span></a></li>
+                    <li class='last'><a href='#'><span>File</span></a></li>
+                    <li class='last'><a href='#'><span>File</span></a></li>-->
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <div id="ContentPDFViewerOnly" >
+        <iframe class="deansRec"      src=""> <!--style="position:absolute" style="position:absolute; display:none"--></iframe>
+        <iframe class="chairRec"      src="">  <!--style="position:absolute" style="position:absolute; display:none"--></iframe>
+        <iframe class="commRec"       src="">  <!--style="position:absolute" style="position:absolute; display:none"--></iframe>
+        <iframe class="priorLetters"  src=""> <!--style="position:absolute" style="position:absolute; display:none"--></iframe>
+        <iframe class="selfEval"      src="https://drive.google.com/file/d/0B4L8Qn8HmLU9R2tZelBXX2JKU0E/preview"></iframe>
+        <iframe class="resume"        src=""></iframe>
+        <iframe class="listOfCourses" src="https://drive.google.com/file/d/0B4L8Qn8HmLU9RHpyYW9GVlZTdzg/preview"></iframe>
+        <iframe class="proDevMats"    src="https://drive.google.com/file/d/0B4L8Qn8HmLU9NmVGVlNyT1QzTU0/preview"></iframe>
+        <iframe class="studentEvals"  src=""><!--style="position:absolute" style="position:absolute; display:none"--></iframe>
+        <iframe class="suppMats"      src="https://drive.google.com/file/d/0B4L8Qn8HmLU9SjdMZmY0OFBNMkE/preview"></iframe>
+
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#deansRecButton').click(function (e) {
+             $('.deansRec').fadeToggle();
+         });
+        $('#chairRecButton').click(function (e) {
+            $('.chairRec').fadeToggle();
+        });
+        $('#commRecButton').click(function (e) {
+            $('.commRec').fadeToggle();
+        });
+        $('#priorLettersButton').click(function (e) {
+            $('.priorLetters').fadeToggle();
+        });
+        $('#selfEvalButton').click(function (e) {
+            $('.selfEval').fadeToggle();
+        });
+        $('#resumeButton').click(function (e) {
+            $('.resume').fadeToggle();
+        });
+        $('#listOfCoursesButton').click(function (e) {
+            $('.listOfCourses').fadeToggle();
+        });
+        $('#proDevMatsButton').click(function (e) {
+            $('.proDevMats').fadeToggle();
+        });
+        $('#lettersButton').click(function (e) {
+            $('.letters').fadeToggle();
+        });
+        $('#studentEvalsButton').click(function (e) {
+            $('.studentEvals').fadeToggle();
+        });
+        $('#suppMatsButton').click(function (e) {
+            $('.suppMats').fadeToggle();
+        });
+    });
+
+</script>
+
+</html>
