@@ -49,6 +49,48 @@ nav ul li:hover
 nav ul li:hover a
 {
 	display:block;
-	color:#000000;
+	color:#222222;
+	height:100%;
+}
+
+nav ul liCurrent {
+	-webkit-border-radius: 0px;
+	list-style-type:none;
+	float:left;
+	display:block;
+	min-width:150px;
+	height:48px;
+	text-align:center;
+	line-height:43px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size:17px;
+	background-color:#5fa2db;
+}
+
+nav ul liCurrent a
+{
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+nav ul >liCurrent:nth-last-child(2)
+{
+	float:right;
+}
+
+nav ul > liCurrent:last-child
+{
+	float:right;
+}
+
+nav ul liCurrent:hover
+{
+	background-color:#5fa2db;
+}
+
+nav ul liCurrent:hover a
+{
+	display:block;
+	color:#222222;
 	height:100%;
 }
