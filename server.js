@@ -3,9 +3,9 @@
 // set up ======================================================================
 // get https ready
 var fs = require('fs');
-var hskey = fs.readFileSync('./certificates/rupert-key.pem');
-var hscert = fs.readFileSync('./certificates/rupert-cert.pem')
-var options = {
+var hskey = fs.readFileSync('./certificates/erpt.gonzaga.edu.key');
+var hscert = fs.readFileSync('./certificates/www_erpt_gonzaga_edu_cert.cer')
+var credentials = {
     key: hskey,
     cert: hscert
 };
@@ -18,7 +18,6 @@ var https     = require("https");
 var httpPort  = process.env.PORT || 80;
 var httpsPort = process.env.PORT || 443;
 var passport  = require('passport');
-var flash     = require('connect-flash');
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -41,14 +40,13 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================
 var httpServer  = http.createServer(app);
-var httpsServer = https.createServer(options, app);
+var httpsServer = https.createServer(credentials, app);
 
 // start http server
 httpServer.listen(httpPort);
