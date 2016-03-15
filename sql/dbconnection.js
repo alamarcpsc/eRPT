@@ -32,27 +32,29 @@ module.exports = {
             });
         });
     },
-    getNames: function(req, res, next){
+    getName: function(username){
         var conn = new sql.Connection(dbConfig);
-        var req = new sql.Request(conn);
+        var request = new sql.Request(conn);
 
         conn.connect(function (err) {
             if (err) {
                 console.log("Error: couldn't connect to the db");
-                return next();
+                req = "1";
+                return;
             }
-            req.query("SELECT * from dbo", function (err, recordset) {
+            var queryString = "SELECT person_Zagweb_ID from dbo.Person where dbo.Person.person_Zagweb_ID = '" + username + "'";
+            request.query(queryString, function (err) {
                 if (err) {
-                    console.log(err);
-                    return next();
+                    console.log("Error: couldn't find the username");
+                    req = "2";
+                    return;
                 }
                 else {
-                    console.log(recordset);
-                    res.recordset = recordset;
-                    return next();
+                    req = "3";
+                    return;
                 }
                 conn.close();
-                return next();
+                return;
             });
         });
     }
