@@ -1,17 +1,18 @@
 <!--
-file:   home.html
-author: Tara Hanson
-date:   January 14, 2016
-desc:   HTML page for the Welcome/Home page of our website
+file:	binderSubmission.ejs
+author:
+date:	February 26, 2016 (updated)
+desc:
 -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>Evaluation</title>
     <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
     <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/table.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -29,35 +30,20 @@ desc:   HTML page for the Welcome/Home page of our website
 </div>
 
 <div id=ContentRegion>
-   <!-- Test 1:
-    <br>
-    <%- JSON.stringify(recordset)%>
-    <br>
-    -->
-
-    <br>
-    <table>
-    <tr>
-    <td>
-        binder_ID
-    </td>
-    <td>
-        binder_Name
-    </td>
-    </tr>
-    <% for(var i = 0; i < recordset.length; i++) { %>
-        <tr>
-        <td><%= recordset[i].binder_ID%></td>
-        <td><%= recordset[i].binder_Name%></td>
-        </tr>
-    <% } %>
-    </table>
+    <div class=container>
+        <div class="submissionLine">
+            <p>TEST BINDER 1</p>
+        </div>
+        <div class="submissionLine">
+            <p>TEST BINDER 2</p>
+        </div>
+        <div class="submissionLine">
+            <p>TEST BINDER 3</p>
+        </div>
+        <div class="submissionLine">
+            <p>TEST BINDER 4</p>
+        </div>
+    </div>
 </div>
 </body>
-
-<script>
-    var dbconnection = require('./sql/dbconnection.js');
-
-</script>
-
 </html>
