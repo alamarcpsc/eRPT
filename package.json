@@ -2,7 +2,7 @@
   "name": "node-authentication",
   "main": "server.js",
   "dependencies" : {
-    "express" : "~4.0.0",
+    "express" : "~4.13.4",
     "ejs" : "~0.8.5",
     "passport" : "~0.1.17",
     "passport-local" : "~0.1.6",
