@@ -11,13 +11,12 @@ module.exports = function(app, passport) {
     // LOGIN ===============================
     // =====================================
     app.get('/', inSession, function(req, res) {
-        res.render('index.ejs', { message: req.flash('loginMessage') });
+        res.render('index.ejs');
     });
 
     app.post('/', passport.authenticate('local-login', {
         successRedirect : '/home', // redirect to the secure profile section
         failureRedirect : '/', // redirect back to the login page if there is an error
-        failureFlash : true // allow flash messages
     }));
 
     // =====================================
@@ -41,8 +40,7 @@ module.exports = function(app, passport) {
     // =====================================
     // TESTER ==============================
     // =====================================
-    app.get('/tester', isLoggedIn, dbconnection.getEMP, function(req, res) {
-        console.log(res);
+    app.get('/tester', isLoggedIn, dbconnection.getBinders, function(req, res) {
         res.render('tester.ejs', {
             user : req.user,
             recordset : res.recordset
@@ -54,6 +52,24 @@ module.exports = function(app, passport) {
     // =====================================
     app.get('/2013Binder', isLoggedIn, function(req, res) {
         res.render('2013Binder.ejs', {
+            user : req.user
+        });
+    });
+
+    // =====================================
+    // FILLEDBINDER ========================
+    // =====================================
+    app.get('/filledBinder', isLoggedIn, function(req, res) {
+        res.render('filledBinderExample.ejs', {
+            user : req.user
+        });
+    });
+
+    // =====================================
+    // BINDERSUBMISSION ==========================
+    // =====================================
+    app.get('/binderSubmission', isLoggedIn, function(req, res) {
+        res.render('binderSubmission.ejs', {
             user : req.user
         });
     });
