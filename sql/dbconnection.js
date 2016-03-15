@@ -3,8 +3,8 @@ var sql = require("mssql");
 var dbConfig = {
     server: "PC106-4B\\SQLEXPRESS",
     database: "eRPT",
-    user: "test",
-    password: "testpassword",
+    user: "insert user here", //needs correct user
+    password: "insert password here", //needs correct password
     port: 1433
 };
 
