@@ -1,6 +1,6 @@
 ( function( $ ) {
 $( document ).ready(function() {
-$('#cssmenu li.has-sub>a').on('click', function(){
+$('#cssMenu li.has-sub>a').on('click', function(){
 		$(this).removeAttr('href');
 		var element = $(this).parent('li');
 		if (element.hasClass('open')) {
