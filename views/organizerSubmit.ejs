@@ -1,0 +1,87 @@
+<!----------------------------------
+// Filename: help.html
+// Author: Sterling Miller
+// Date: February 24, 2016
+// Desc: The purpose of this page is to generate
+the submission page for organizers.
+--------------------------------------->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <!----------------------------------
+    This is the title of the webpage.
+    --------------------------------------->
+    <title>eRPT Organizer Submission</title>
+
+
+    <!----------------------------------
+    These are the various references to the .css
+    pages being used by this html file.
+    --------------------------------------->
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
+            <liCurrent><a href="/organizer">Organizer</a></liCurrent>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id=contentRegion>
+    <div id=contentNormal>
+        <center><img src="images/eRPT_2.2.png" width=124px height=71px"></center>
+        <div id="IntroParagraph">
+            <center><h1>Welcome to the Submission Page!</h1></center>
+
+            <h2>Disclaimer</h2>
+            <p>You are about to submit a binder that you are done organizing. Please note that once you confirm this binder submission
+                you will be unable to further alter this binder, as view and editing permissions for this binder will change. If this is a mistake,
+                please select the "Abort" option below. To pass this binder along to the next step, please select "Confirm" and this binder will be
+                passed along to the next step within the eRPT process.</p>
+            <hr>
+
+
+            <button style="float: left;" type="button" onclick="alert('Hello world!')">Abort</button>
+            <button style="float: right;" type="button" onclick="confirmAlert()">Confirm</button>
+
+            <p>
+
+            </p>
+
+
+            <center>
+                <img src="images/submitGraphic.png" width=700px height=275px">
+            </center>
+
+            <h2>Potentially display the binder info below: so they know what they are submitting. </h2>
+
+            <hr>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
+
+<script>
+
+    function confirmAlert()
+    {
+        alert("You have successfully submitted this binder. If this is a mistake, please email blahblahblah@zagmail.gonzaga.edu for additional support.");
+    }
+
+</script>

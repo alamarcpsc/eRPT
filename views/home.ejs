@@ -1,7 +1,7 @@
 <!--
 file:   home.html
-author: Tara Hanson
-date:   January 14, 2016
+author: Tara Hanson (with modifications by RJ Riley)
+date:   3/13/16 (modified)
 desc:   HTML page for the Welcome/Home page of our website
 -->
 
@@ -19,34 +19,55 @@ desc:   HTML page for the Welcome/Home page of our website
     <nav>
         <ul>
             <liCurrent><a href="/home">Home</a></liCurrent>
-            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
             <li><a href="/organizer">Organizer</a></li>
             <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
             <li><a href="/logout"><%= user.username%>, Log Out</a></li>
             <li><a href="/help">Help</a></li>
         </ul>
     </nav>
 </div>
 
-<div id=ContentRegion>
-    <div id=ContentNormal>
+
+<div id=contentRegion>
+    <div id=contentNormal>
         <div style="text-align:center">
-            <!--<img src="/images/eRPT_2.2.png" width=124px height=71px">-->
             <br>
+            <center><img src="images/eRPT_2.2.png" width=190px height=120px"></center>
             <h1>Welcome to Gonzaga University eRPT</h1>
             <br>
-            <img src="/images/homeGraphic.png" width=68% height=68%">
+            <img src="images/homeGraphic.png" width=68% height=68%>
             <br>
         </div>
-        <div id=IntroParagraph>
-            <h2>Introduction</h2>
-            <p>Welcome to Gonzaga University's electronic reappointment, promotion, and tenure application. This goal of this website is
+        <div id=introParagraph>
+            <h2>Getting Started</h2>
+            <p>Welcome to Gonzaga University's Electronic Reappointment, Promotion, and Tenure software application. The goal of this website is
                 to assist applicants and evaluators with the RPT process by simplifying binder creation and eliminating paper waste.  This
-                website was designed by a group of senior computer science students as part of their capstone project for the year of 2015-16,
+                website was designed by a group of senior computer science students as part of their capstone project for the 2015-2016 academic school year,
                 with hopes to assist Gonzaga University in bettering the RPT process.</p>
+            <p>Essentially, users of the eRPT system are broken up into three different user roles. If you are are currently logged on to the
+                web application, you are either an Applicant, Organizer or Evaluator. In some case, members of Gonzaga's faculty could be
+                in the role of multiple user types at the same time. For instance, you may be submitting your own application for reappointment while
+                also serving as a committee member, reviewing applications. </p>
+            <p>Most users of the Gonzaga Electronic Reappointment Promotion and Tenure system are going to be applicants. In this role,
+                you can create a binder that will be submitted to various committees for evaluation. To do this, select the "My Binder" tab at the top of
+                the page. From here, you will be able to start a new binder for submission, and view previous binders you have made.</p>
+            <p>Organizers and Evaluators can select on the tabs of the same name respectively. As an Organizer, you can add files to binders that have been
+                submitted for additional materials, or as an Evaluator, you can view completed binders that are ready for review by your committee.</p>
+        </div>
+        <div style="text-align:center">
+            <p><b>Development Team</b></p>
+            <p>RJ Riley</p>
+            <p>Adam La Mar</p>
+            <p>Tara Hanson</p>
+            <p>Eric Jobes</p>
+            <p>Sterling Miller</p>
+            <div style="text-align:center">
+                <p><b>Gonzaga University - School of Engineering and Applied Science - CPSC 491/492 - RuPeRT - All Rights Reserved </b></p>
+            </div>
         </div>
 
     </div>
-</div>
 </body>
 </html>

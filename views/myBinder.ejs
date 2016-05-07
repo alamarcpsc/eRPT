@@ -16,20 +16,21 @@ desc:
 </head>
 
 <body>
-<div id=NavBar>
+<div id=navBar>
     <nav>
         <ul>
             <li><a href="/home">Home</a></li>
-            <liCurrent><a href="/myBinder">My Binder</a></liCurrent>
+            <liCurrent><a href="/dynamicBinder">My Binders</a></liCurrent>
             <li><a href="/organizer">Organizer</a></li>
             <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
             <li><a href="/logout"><%= user.username%>, Log Out</a></li>
             <li><a href="/help">Help</a></li>
         </ul>
     </nav>
 </div>
 
-<div id=ContentRegion>
+<div id=contentRegion>
     <div class=container>
         <div class=pricing-table>
             <div class=pricing-table-header>

@@ -1,0 +1,884 @@
+<!--
+file:	binderTemplateOrganizer
+author: Eric Jobes
+date:	31 Mar 2016
+desc:   Dynamically retrieve binders from database
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Binder</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/table.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/alwaysOpenSidebar.css" rel="stylesheet">
+    <script src="/javascript/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/javascript/alwaysOpenSidebar.js"></script>
+</head>
+
+<body>
+<div id=navBar>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
+            <liCurrent><a href="/organizer">Organizer</a></liCurrent>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+
+<div id="contentAndSidebarRegion">
+    <div id='cssMenu'>
+        <div id="uploady">
+            <input id="inputFileField" type="file" name="files" accept="application/pdf">
+            <form action="/organizerViewBinder/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                <input id="payload" type="hidden" name="pdfString" value="" required>
+                <input id="pdfName" type="hidden" name="pdfName" value="" required>
+                <select name="tabToPush" style='width:276px;margin-bottom:8px;' required>
+                    <option selected disabled>Select the tab</option>
+                    <option value="0">Dean's Recommendation</option>
+                    <option value="1">Chair Recommendation</option>
+                    <option value="2">Committee Recommendation</option>
+                    <option value="3">Prior Letters & Recommendations</option>
+                    <option value="4">Self Eval & Personal Statement</option>
+                    <option value="5">Current Resumé</option>
+                    <option value="6">List of Courses</option>
+                    <option value="7">Professional Development Materials</option>
+                    <option value="8">Letters</option>
+                    <option value="9">Student Evaluations</option>
+                    <option value="10">List of Supplemental Materials</option>
+                </select>
+                <input id="formSub" type="submit" value="Confirm" class="uploadButton-sidebar" style="margin-bottom:8px;">
+                <br>
+            </form>
+        </div>
+        <ul>
+            <li class='active has-sub'><a href='#'><span>Dean's Recommendation</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="deansRecFileName" href="#">
+
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 0){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Chair Recommendation</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="chairRecFileName" href="#">
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 1){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Committee <br> Recommendation</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="commRecFileName" href="#">
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 2){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Prior Letters & Recommendation</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                               <table>
+                                   <tbody>
+                                   <tr>
+                                       <td align="left" colspan="0">
+                                           <a class="link-sidebar" id="priorLettersFileName" href="#">
+                                               <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                   <% if(binderFiles[i].binder_Tab == 3){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                   <% } %>
+                                               <!-- END OF Querying>-->
+                                               <% } %>
+                                           </a>
+                                       </td>
+                                   </tr>
+                                   </tbody>
+                               </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Self Eval & Personal Statement</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="selfEvalFileName" href="#">
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 4){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Current Resumé</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="resumeFileName" href="#">
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 5){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>List of Courses</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="listOfCoursesFileName" href="#">
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 6){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Professional Development Materials</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="proDevFileName" href="#">
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 7){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Letters</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="lettersFileName" href="#">
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 8){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Student Evaluations</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                               <table>
+                                   <tbody>
+                                   <tr>
+                                       <td align="left" colspan="0">
+                                           <a class="link-sidebar" id="studentEvalsFileName" href="#">
+                                               <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                   <% if(binderFiles[i].binder_Tab == 9){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                       <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                           <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                           <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                           <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" style="margin-bottom:8px;" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                           <br>
+                                                       </form>
+                                                   <% } %>
+                                               <!-- END OF Querying>-->
+                                               <% } %>
+                                           </a>
+                                       </td>
+                                   </tr>
+                                   </tbody>
+                               </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>List of Supplemental Materials</span></a>
+                <ul>
+                    <li class='last'>
+                        <a href='#'><span>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left" colspan="0">
+                                            <a class="link-sidebar" id="supplementalMaterialsFileName" href="#">
+                                                <% for(var i = binderFiles.length-1; i >=0 ; i--) { %>
+                                                    <% if(binderFiles[i].binder_Tab == 10){%>
+                                                        <%= binderFiles[i].file_Name%>
+                                                        <form action="/organizerViewBinderREMOVE/?binder=<%= binder_ID%>" style="padding-top:8px"method="post">
+                                                            <input id="binder_Tab" type="hidden" name="binder_Tab" value="<%=binderFiles[i].binder_Tab%>">
+                                                            <input id="file_ID" type="hidden" name="file_ID" value="<%=binderFiles[i].file_ID%>">
+                                                            <input id="formSub" type="submit" value="Remove" class="removeButton-sidebar" style="margin-bottom:8px;" onclick="return confirm('Are you sure you want to delete this file?')">
+                                                            <br>
+                                                        </form>
+                                                    <% } %>
+                                                <!-- END OF Querying>-->
+                                                <% } %>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="deansRec"      ></div>
+    <div class="chairRec"      ></div>
+    <div class="commRec"       ></div>
+    <div class="priorLetters"  ></div>
+    <div class="selfEval"      ></div>
+    <div class="resume"        ></div>
+    <div class="listOfCourses" ></div>
+    <div class="proDevMats"    ></div>
+    <div class="studentEvals"  ></div>
+    <div class="suppMats"      ></div>
+
+    <div id="contentPDFWithAnno0" class = "deansRec" style="display:none">
+        <% tabToCheck = 0%>
+        <% increment = 0%>
+        <script>
+            <% for(var i = 0; i < binderFiles.length ; i++) { %>
+                <% if(binderFiles[i].binder_Tab == 0){%>
+                    var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                    var newSize = obtainedPDF.content.data.length;
+                    var byteHolder = new Uint8Array(newSize);
+                    for (var i = 0; i < newSize; i++) {
+                        byteHolder[i] = obtainedPDF.content.data[i];
+                    }
+                    var bufferedHolder = byteHolder.buffer;
+                    var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                    var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                    document.getElementById("contentPDFWithAnno0").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                    <% increment = increment + 1;%>
+                <% } %>
+            <% } %>
+            <% tabToCheck = tabToCheck + increment%>
+        </script>
+
+    </div>
+    <div id="contentPDFWithAnno1" class = "chairRec" style="display:none">
+    <script>
+        <% increment = 0%>
+        <% for(var i = 0; i < binderFiles.length ; i++) { %>
+            <% if(binderFiles[i].binder_Tab == 1){%>
+
+                var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                var newSize = obtainedPDF.content.data.length;
+                var byteHolder = new Uint8Array(newSize);
+                for (var i = 0; i < newSize; i++) {
+                    byteHolder[i] = obtainedPDF.content.data[i];
+                }
+                var bufferedHolder = byteHolder.buffer;
+                var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                document.getElementById("contentPDFWithAnno1").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                <% increment = increment + 1;%>
+            <% } %>
+        <% } %>
+        <% tabToCheck = tabToCheck + increment%>
+    </script>
+</div>
+    <div id="contentPDFWithAnno2" class = "commRec" style="display:none">
+    <script>
+        <% increment = 0%>
+        <% for(var i = 0; i < binderFiles.length ; i++) { %>
+            <% if(binderFiles[i].binder_Tab == 2){%>
+                var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                var newSize = obtainedPDF.content.data.length;
+                var byteHolder = new Uint8Array(newSize);
+                for (var i = 0; i < newSize; i++) {
+                    byteHolder[i] = obtainedPDF.content.data[i];
+                }
+                var bufferedHolder = byteHolder.buffer;
+                var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                document.getElementById("contentPDFWithAnno2").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                <% increment = increment + 1;%>
+            <% } %>
+        <% } %>
+        <% tabToCheck = tabToCheck + increment%>
+    </script>
+</div>
+    <div id="contentPDFWithAnno3" class = "priorLetters" style="display:none">
+    <script>
+        <% increment = 0%>
+        <% for(var i = 0; i < binderFiles.length ; i++) { %>
+            <% if(binderFiles[i].binder_Tab == 3){%>
+                var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                var newSize = obtainedPDF.content.data.length;
+                var byteHolder = new Uint8Array(newSize);
+                for (var i = 0; i < newSize; i++) {
+                    byteHolder[i] = obtainedPDF.content.data[i];
+                }
+                var bufferedHolder = byteHolder.buffer;
+                var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                document.getElementById("contentPDFWithAnno3").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                <% increment = increment + 1;%>
+            <% } %>
+        <% } %>
+        <% tabToCheck = tabToCheck + increment%>
+    </script>
+</div>
+    <div id="contentPDFWithAnno4" class = "selfEval" style="display:none">
+        <script>
+            <% increment = 0%>
+            <% for(var i = 0; i < binderFiles.length ; i++) { %>
+                <% if(binderFiles[i].binder_Tab == 4){%>
+                    var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                    var newSize = obtainedPDF.content.data.length;
+                    var byteHolder = new Uint8Array(newSize);
+                    for (var i = 0; i < newSize; i++) {
+                        byteHolder[i] = obtainedPDF.content.data[i];
+                    }
+                    var bufferedHolder = byteHolder.buffer;
+                    var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                    var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                    document.getElementById("contentPDFWithAnno4").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                    <% increment = increment + 1;%>
+                <% } %>
+            <% } %>
+            <% tabToCheck = tabToCheck + increment%>
+        </script>
+    </div>
+    <div id="contentPDFWithAnno5" class = "resume" style="display:none">
+        <script>
+            <% increment = 0%>
+            <% for(var i = 0; i < binderFiles.length ; i++) { %>
+                <% if(binderFiles[i].binder_Tab == 5){%>
+                    var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                    var newSize = obtainedPDF.content.data.length;
+                    var byteHolder = new Uint8Array(newSize);
+                    for (var i = 0; i < newSize; i++) {
+                        byteHolder[i] = obtainedPDF.content.data[i];
+                    }
+                    var bufferedHolder = byteHolder.buffer;
+                    var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                    var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                    document.getElementById("contentPDFWithAnno5").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                    <% increment = increment + 1;%>
+                <% } %>
+            <% } %>
+            <% tabToCheck = tabToCheck + increment%>
+        </script>
+    </div>
+    <div id="contentPDFWithAnno6" class = "listOfCourses" style="display:none">
+        <script>
+            <% increment = 0%>
+            <% for(var i = 0; i < binderFiles.length ; i++) { %>
+                <% if(binderFiles[i].binder_Tab == 6){%>
+                    var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                    var newSize = obtainedPDF.content.data.length;
+                    var byteHolder = new Uint8Array(newSize);
+                    for (var i = 0; i < newSize; i++) {
+                        byteHolder[i] = obtainedPDF.content.data[i];
+                    }
+                    var bufferedHolder = byteHolder.buffer;
+                    var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                    var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                    document.getElementById("contentPDFWithAnno6").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                    <% increment = increment + 1;%>
+                <% } %>
+            <% } %>
+            <% tabToCheck = tabToCheck + increment%>
+        </script>
+    </div>
+    <div id="contentPDFWithAnno7" class = "proDevMats" style="display:none">
+        <script>
+            <% increment = 0%>
+            <% for(var i = 0; i < binderFiles.length ; i++) { %>
+                <% if(binderFiles[i].binder_Tab == 7){%>
+                    var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                    var newSize = obtainedPDF.content.data.length;
+                    var byteHolder = new Uint8Array(newSize);
+                    for (var i = 0; i < newSize; i++) {
+                        byteHolder[i] = obtainedPDF.content.data[i];
+                    }
+                    var bufferedHolder = byteHolder.buffer;
+                    var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                    var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                    document.getElementById("contentPDFWithAnno7").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                    <% increment = increment + 1;%>
+                <% } %>
+            <% } %>
+            <% tabToCheck = tabToCheck + increment%>
+        </script>
+    </div>
+    <div id="contentPDFWithAnno8" class = "letters" style="display:none">
+        <script>
+            <% increment = 0%>
+            <% for(var i = 0; i < binderFiles.length ; i++) { %>
+                <% if(binderFiles[i].binder_Tab == 8){%>
+                    var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                    var newSize = obtainedPDF.content.data.length;
+                    var byteHolder = new Uint8Array(newSize);
+                    for (var i = 0; i < newSize; i++) {
+                        byteHolder[i] = obtainedPDF.content.data[i];
+                    }
+                    var bufferedHolder = byteHolder.buffer;
+                    var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                    var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                    document.getElementById("contentPDFWithAnno8").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                    <% increment = increment + 1;%>
+                <% } %>
+            <% } %>
+            <% tabToCheck = tabToCheck + increment%>
+        </script>
+    </div>
+    <div id="contentPDFWithAnno9" class = "studentEvals" style="display:none">
+        <script>
+            <% increment = 0%>
+            <% for(var i = 0; i < binderFiles.length ; i++) { %>
+                <% if(binderFiles[i].binder_Tab == 9){%>
+                    var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                    var newSize = obtainedPDF.content.data.length;
+                    var byteHolder = new Uint8Array(newSize);
+                    for (var i = 0; i < newSize; i++) {
+                        byteHolder[i] = obtainedPDF.content.data[i];
+                    }
+                    var bufferedHolder = byteHolder.buffer;
+                    var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                    var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                    document.getElementById("contentPDFWithAnno9").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                    <% increment = increment + 1;%>
+                <% } %>
+            <% } %>
+            <% tabToCheck = tabToCheck + increment%>
+        </script>
+    </div>
+    <div id="contentPDFWithAnno10" class = "suppMats" style="display:none">
+        <script>
+            <% increment = 0%>
+            <% for(var i = 0; i < binderFiles.length ; i++) { %>
+                <% if(binderFiles[i].binder_Tab == 10){%>
+                    var obtainedPDF = JSON.parse('<%- JSON.stringify(binderFiles[tabToCheck]) %>');
+                    var newSize = obtainedPDF.content.data.length;
+                    var byteHolder = new Uint8Array(newSize);
+                    for (var i = 0; i < newSize; i++) {
+                        byteHolder[i] = obtainedPDF.content.data[i];
+                    }
+                    var bufferedHolder = byteHolder.buffer;
+                    var blobbyAttempt = new Blob([bufferedHolder], {type : 'application/pdf'});
+                    var urlForBlob = URL.createObjectURL(blobbyAttempt);
+                    document.getElementById("contentPDFWithAnno10").innerHTML = "<iframe src='" + urlForBlob + "'></iframe>";
+                    <% increment = increment + 1;%>
+                <% } %>
+            <% } %>
+            <% tabToCheck = tabToCheck + increment%>
+        </script>
+    </div>
+
+    <div id="contentAnnotation">
+        <div id="actionsRegion">
+            <form action="/releaseBinderToEvaluators" style="padding-top:8px"method="post">
+                <input id="binder_ID" name="binder_ID" hidden value=<%= binder_ID%>>
+                <select name="comm_ID" style='width:230px;margin-bottom:8px;' required>
+                    <option selected disabled>Select the Committee to release to</option>
+                    <% for(var i = 0; i < allCommittees.length; i++) { %>
+                        <option value="<%=allCommittees[i].comm_ID%>"> <%=allCommittees[i].comm_Name%></option>
+                    <% }%>
+                </select>
+                <input type="submit" value="Release to Evaluators" class="button-annotation" onclick="return confirm('Are you sure you want to submit this binder to a committee of evaluators?')">
+            </form>
+            <br>
+            When you submit, we'll create a copy so that you can still view your files!
+
+        </div>
+
+        <div id="actionsRegion">
+            <form action="/submitBinderToOrganizerFromOrganizer" style="padding-top:8px"method="post">
+                <input id="binder_ID" type="hidden" name="binder_ID" value=<%= binder_ID%>>
+                <select name="organizer_ID" style='width:230px;margin-bottom:8px;' required>
+                    <option selected disabled>Select the Organizer</option>
+                    <% for(var i = 0; i < uniqueOrganizers.length; i++) { %>
+                    <option value="<%=uniqueOrganizers[i].person_ID%>"> <%=uniqueOrganizers[i].person_First_Name%> <%= uniqueOrganizers[i].person_Last_Name %></option>
+                    <% }%>
+                </select>
+                <input type="submit" value="Submit to another Organizer" class="button-annotation" onclick="return confirm('Are you sure you want to submit this binder to another organizer?')">
+            </form>
+            <br>
+            Use this to pass the binder on to a higher committee.
+
+        </div>
+    </div>
+
+
+    <div id="terminatorDiv">
+    </div>
+
+</div>
+
+<script>
+    function readSingleFile(event) {
+        var fileIn = event.target.files[0];
+        var readr = new FileReader();
+        var builtArrayString = '0x'
+        if (fileIn) {
+            if(fileIn.type == 'application/pdf')
+            {
+                readr.addEventListener("loadend",function(){
+                            var fileToBytes = new Uint8Array(readr.result.slice(0));
+                            for (var ndx = 0; ndx < fileToBytes.length; ndx++)
+                            {
+                                var numberString = fileToBytes[ndx].toString(16);
+                                if (numberString.length == 1)
+                                {
+                                    numberString = '0' + numberString;
+                                }
+                                builtArrayString = builtArrayString + numberString;
+                            }
+
+                            document.getElementById("payload").value = builtArrayString;
+                            document.getElementById("pdfName").value = fileIn.name;
+                            document.getElementById("formSub").style.backgroundColor = "rgb(11,42,80)";
+                        }
+                );
+            }
+            else {
+                alert("Extension not .pdf");
+            }
+        } else {
+            alert("Failed to load file");
+        }
+        readr.readAsArrayBuffer(fileIn);
+    }
+
+    document.getElementById("inputFileField").addEventListener('change', readSingleFile, false);
+</script>
+
+<!-- hide/show functions-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#deansRecFileName').click(function (e) {
+            $('.deansRec').fadeToggle();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#chairRecFileName').click(function (e) {
+            $('.chairRec').fadeToggle();
+            $('.deansRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#commRecFileName').click(function (e) {
+            $('.commRec').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#priorLettersFileName').click(function (e) {
+            $('.priorLetters').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#selfEvalFileName').click(function (e) {
+            $('.selfEval').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#resumeFileName').click(function (e) {
+            $('.resume').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#listOfCoursesFileName').click(function (e) {
+            $('.listOfCourses').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#proDevFileName').click(function (e) {
+            $('.proDevMats').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#lettersFileName').click(function (e) {
+            $('.letters').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.studentEvals').hide();
+            $('.suppMats').hide();
+        });
+        $('#studentEvalsFileName').click(function (e) {
+            $('.studentEvals').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.suppMats').hide();
+        });
+        $('#supplementalMaterialsFileName').click(function (e) {
+            $('.suppMats').fadeToggle();
+            $('.deansRec').hide();
+            $('.chairRec').hide();
+            $('.commRec').hide();
+            $('.priorLetters').hide();
+            $('.selfEval').hide();
+            $('.resume').hide();
+            $('.listOfCourses').hide();
+            $('.proDevMats').hide();
+            $('.letters').hide();
+            $('.studentEvals').hide();
+        });
+    });
+
+</script>
+</body>
+</html>

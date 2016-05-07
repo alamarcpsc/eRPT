@@ -1,0 +1,144 @@
+<!----------------------------------
+// Filename: admin.html
+// Author: Tara Hanson and Sterling Miller
+// Date: May 3, 2016
+// Desc: The purpose of this page is to allow
+		 the admins to assign specific organizers
+		 to the various committees, to enter new
+		 committees, and to enter new organizers.
+--------------------------------------->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/adminTable.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/adminTable2.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/alwaysOpenSidebar.css" rel="stylesheet" type="text/css">
+    <script src="/javascript/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/javascript/alwaysOpenSidebar.js"></script>
+</head>
+<body>
+
+<!-------------------------------------------
+This is the code that handles the navigation bar.
+--------------------------------------->
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <liCurrent><a href="/admin">Admin</a></liCurrent>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id="contentAndSidebarRegion">
+    <div id='cssMenu'>
+        <ul>
+            <li class='active has-sub'><a href='#'><span>Edit</span></a>
+                <ul>
+                    <li class='last'><a href='/admin'><span>Committees and Organizers</span></a></li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>View Current</span></a>
+                <ul>
+                    <li class='last'><a href='/adminView'><span>View</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!----------------------------------
+    This content region is responsible for
+    educating an administrator on how to use
+    the admin page.
+    --------------------------------------->
+    <div id=contentPDFViewerOnly>
+        <br>
+        <center><img src="images/eRPT_2.2.png" width=124px height=71px"></center>
+        <div id="IntroParagraph">
+            <center><h1>Welcome to the Admin Page!</h1></center>
+
+            <h2>Instructions</h2>
+            <p>As an administrator, your responsibility is to assign certain staff and/or faculty members to be the
+                organizers for the eRPT process. Not only will you create a comprehensive list of all organizers
+                and committees, you must also associate these organizers with their respective committee(s).
+                To do this, select a committee from the list below. Then select the organizer(s) that should be associated
+                with the committee and press "Assign." To view the current list of committees and the organizer(s) currently
+                assigned to them, click the "View Current" tab on the left side of the page.
+            </p>
+
+
+            <!-------------------------------------------
+            This is the code that handles the first table.
+            This table displays all the committees, and
+            is used in helping an administrator assign
+            organizers to a particular department or
+            school.
+            --------------------------------------->
+
+
+            <b>Add a new committee:</b>
+            <form name="addCommitteeForm" action="/adminAddCommittee" style="..." method="post">
+                <label style ="display:inline-block;width:250px; margin-top:5px">Name of new committee:</label><input id="comm_Name" name="comm_Name" required> <br>
+                <label style ="display:inline-block;width:250px;"></label><input  type="submit" value="Add Committee" class="organizeButton-lineItem" style ="width:174px; margin-top:5px" title="Click here to add a new committee. Don't forget to name it!">
+            </form>
+            <br>
+            <b>Add an organizer to an existing committee:</b>
+            <form name="addOrganizerForm" action="/adminAddOrganizer" style="..." method="post">
+                <label style="display:inline-block; width:250px; margin-top:5px">Gonzaga username (ex. jdoe):</label><input id="orgZagID" name="orgZagID" required > <br>
+                <label style="display:inline-block; width:250px; margin-top:5px">Committee Name:</label><input id="comm_Name" name="comm_Name" required ><br>
+                <label style="display:inline-block; width:250px;"></label><input type="submit" value="Add Organizer" class="organizeButton-lineItem" style="width:174px; margin-top:5px" title="Click here to assign a person to a committee as an organizer.">
+            </form>
+            <br>
+            <form name="assignOrganizerToCommittee" action="/adminAssignOrganizerToCommittee" style="..." method="post">
+
+                <table id="AssignmentTable" style="width:40%">
+                    <tr>
+                        <th>Committees</th>
+                    </tr>
+                    <% for(var i = 0; i < allCommittees.length; i++) { %>
+                    <tr>
+                        <td>
+                            <input type="radio" name="comm_Name" value=' <%= allCommittees[i].comm_Name%> '><%= allCommittees[i].comm_Name%>
+                        </td>
+                    </tr>
+                    <% } %>
+                </table>
+
+
+                <!-------------------------------------------
+                This is the code that handles the second table.
+                This table displays a list of all current organizers,
+                and is used in helping an administrator
+                assign organizers to a particular department or
+                school.
+                --------------------------------------->
+
+                <table id="AssignmentTable2" style="width:40%">
+                    <tr>
+                        <th>Organizers</th>
+                    </tr>
+                    <% for(var i = 0; i < uniqueOrganizers.length; i++) { %>
+                    <tr>
+                        <td><input type="radio" name="orgZagID" value=' <%= uniqueOrganizers[i].person_Zagweb_ID%> '><%= uniqueOrganizers[i].person_First_Name%> <%= uniqueOrganizers[i].person_Last_Name %></td>
+                    </tr>
+                    <% } %>
+                </table>
+
+                <input type="submit" value="Assign Organizer" class="organizeButton-lineItem" style="width:174px; margin-top:5px" title="Click here after selecting a committee and an organizer to add to it.">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

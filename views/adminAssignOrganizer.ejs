@@ -1,0 +1,94 @@
+<!-------------------------
+// Filename: adminAssignOrganizer.html
+// Author: Tara Hanson
+// Date: March 29, 2016
+// Desc: Creates the page which allows organizers
+//		 to assign evaluators to a specific committee.
+---------------------------->
+
+<!doctype html>
+<html>
+<head>
+    <title>adminAssignOrganizer</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/alwaysOpenSidebar.css" rel="stylesheet">
+    <link href="/stylesheets/adminTable.css" rel="stylesheet" type="text/css">
+    <script src="/javascript/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/javascript/alwaysOpenSidebar.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <liCurrent><a href="/admin">Admin</a></liCurrent>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+    <div id="contentAndSidebarRegion">
+        <div id='cssMenu'>
+            <ul>
+                <li class='active has-sub'><a href='#'><span>Committees<span></a>
+                    <ul>
+                        <li class='last'><a href='/admin'><span>View Committees</span></a></li>
+                    </ul>
+                </li>
+                <li class='active has-sub'><a href='#'><span>Organizers<span></a>
+                    <ul>
+                        <li class='last'><a href='/adminAssignOrganizer'><span>Assign Organizers</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+        <form>
+        <table id="AssignmentTable" style="width: 30%">
+            <th>Committee</th>
+            </tr>
+            <tr>
+                <td><input type="radio" name="committee" value="Education">Education</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="committee" value="Business">Business</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="committee" value="etc">Dynamically generated, will fill</td>
+            </tr>
+        </table>
+    </form>
+
+        <form>
+        <table id="AssignmentTable" style="width: 30%">
+            <caption align="bottom">
+                <br>
+                <button class="button" style="float:left">Add Organizer</button>
+                <button class="button" style="float:right">Assign</button>
+            </caption>
+            <th>Organizer</th>
+            </tr>
+            <tr>
+                <td><input type="radio" name="organizer" value="rhodes">Amanda Rhodes</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="organizer" value="bowers">Shawn Bowers</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="organizer" value="etc">Dynamically generated, will fill</td>
+            </tr>
+        </table>
+    </form>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!----------------------------------
+// Filename: organizerEdit.html
+// Author: Tara Hanson and Sterling Miller
+// Date: May 3, 2016
+// Desc: The purpose of this page is to allow
+		 the organizers to assign specific evaluators
+		 to the various committees.
+--------------------------------------->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>organizerEdit</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/submissionLines.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/alwaysOpenSidebar.css" rel="stylesheet">
+    <link href="/stylesheets/adminTable.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/adminTable2.css" rel="stylesheet" type="text/css">
+    <script src="/javascript/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/javascript/alwaysOpenSidebar.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<!-------------------------------------------
+This is the code that handles the navigation bar.
+--------------------------------------->
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
+            <liCurrent><a href="/organizer">Organizer</a></liCurrent>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id="contentAndSidebarRegion">
+    <div id='cssMenu'>
+        <ul>
+            <li class='active has-sub'><a href='#'><span>Organize Binders</span></a>
+                <ul>
+                    <li class='last'><a href='/organizer'><span>Organize Applicant Binders</span></a></li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Edit Committees</span></a>
+                <ul>
+                    <li class='last'><a href='/organizerEdit'><span>Edit Evaluators & Committees</span></a></li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>View Current</span></a>
+                <ul>
+                    <li class='last'><a href='/organizerView'><span>View Evaluators & Committees</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id=contentPDFViewerOnly>
+
+        <!-------------------------------------------
+        This is the code that handles the first table.
+        This table displays the committess that the current
+        user is an organizer of, and is used in helping an
+        organizer assign evaluators to a particular committee.
+        --------------------------------------->
+        <form name="addEvaluatorForm" action="/organizerAddEvaluator" style="..." method="post">
+            <label style ="display:inline-block;width:250px; margin:5px">Gonzaga username (ex. jdoe):</label><input id="orgZagID" name="orgZagID" required><br>
+            <label style ="display:inline-block;width:250px; margin:5px">Committee Name:</label><input id="comm_Name" name="comm_Name" required><br>
+            <label style ="display:inline-block;width:260px;"></label><input type="submit" value="Add Evaluator" class="organizeButton-lineItem" style="width:174px; margin-top:5px">
+        </form>
+
+        <form name="assignEvaluatorToCommittee" action="/organizerAssignEvaluatorToCommittee" style="..." method="post">
+
+            <table id="AssignmentTable" style="width:40%">
+                <tr>
+                    <th>Committees</th>
+                </tr>
+                <% for(var i = 0; i < organizersCommittees.length; i++) { %>
+                <tr>
+                    <td><input type="radio" name="comm_Name" value=' <%= organizersCommittees[i].comm_Name%> '><%= organizersCommittees[i].comm_Name%></td>
+                </tr>
+                <% } %>
+            </table>
+
+            <!-------------------------------------------
+            This is the code that handles the second table.
+            This table display all of the user that are currently
+            listed as an evaluator for any committee, and is used
+            in helping an administrator assign organizers to a
+            particular department or school.
+            --------------------------------------->
+
+            <table id="AssignmentTable2" style="width:40%">
+                <tr>
+                    <th>Evaluators</th>
+                </tr>
+                <% for(var i = 0; i < uniqueCommitteeEvaluators.length; i++) { %>
+                <tr>
+                    <td><input type="radio" name="orgZagID" value=' <%= uniqueCommitteeEvaluators[i].person_Zagweb_ID%> '><%= uniqueCommitteeEvaluators[i].person_First_Name %> <%= uniqueCommitteeEvaluators[i].person_Last_Name %></td>
+                </tr>
+                <% } %>
+            </table>
+            <input type="submit" class="organizeButton-lineItem" value="Assign Evaluator" style="width:250px; margin-top:5px">
+
+    </div>
+
+</body>
+</html>

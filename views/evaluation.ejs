@@ -1,77 +1,69 @@
 <!--
-file:	evaluation.ejs
-author:
-date:	January 14, 2016 (updated)
-desc:
+file:	dynamicBinder
+author: Eric Jobes
+date:	31 Mar 2016
+desc:   Dynamically retrieve binders from database
 -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Evaluation</title>
+    <title>My Binder</title>
     <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
     <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
-    <link href="/stylesheets/table.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/submissionLines.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<div id="NavBar">
+<div id=navBar>
     <nav>
         <ul>
             <li><a href="/home">Home</a></li>
-            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
             <li><a href="/organizer">Organizer</a></li>
             <liCurrent><a href="/evaluation">Evaluation</a></liCurrent>
+            <li><a href="/admin">Admin</a></li>
             <li><a href="/logout"><%= user.username%>, Log Out</a></li>
             <li><a href="/help">Help</a></li>
         </ul>
     </nav>
 </div>
 
-<div id=ContentRegion>
+<div id=contentRegion>
     <div class=container>
-        <div class="pricing-table">
-            <div class="pricing-table-header">
-                <h3>John Doe</h3>
-                <h3>2015</h3>
-            </div>
-            <div class="pricing-table-space"></div>
-            <div class="pricing-table-features">
-                <p><strong>Applying for:</strong> Reappointment</p>
-            </div>
-            <div class="pricing-table-sign-up">
-                <p><a href="/evaluationExample">Evaluate!</a></p>
+        <div class="submissionLine">
+            <div class="submissionLine-contentBox-rightHalf">
+                <div class="submissionLine-contentBox-whole">
+                    New binders appear on top in descending order by time submitted to you.
+                </div>
             </div>
         </div>
+        <!-- show new binders on top by starting at binders.length-1, go to 0 -->
+        <% for(var i = binders.length-1; i >=0 ; i--) { %>
+        <div class="submissionLine">
+            <div class="submissionLine-contentBox-whole">
+                Binder Name: <%= binders[i].binder_Name%>
+            </div>
+            <div class="submissionLine-contentBox-leftHalf">
+            </div>
+            <div class="submissionLine-contentBox-rightHalf">
 
-        <div class="pricing-table">
-            <div class="pricing-table-header">
-                <h3>Jane Doe</h3>
-                <h3>2015</h3>
-            </div>
-            <div class="pricing-table-space"></div>
-            <div class="pricing-table-features">
-                <p><strong>Applying for:</strong> Promotion</p>
-            </div>
-            <div class="pricing-table-sign-up">
-                <p><a href="">Evaluate!</a></p>
-            </div>
-        </div>
+                <form action="/evaluationOPEN" style="padding-top:8px"method="post" class="formClass">
+                    <input name="dynamicBinderAction" type="hidden" value="OPEN" >
+                    <input id="binder_ID" type="hidden" name="binder_ID" value=<%= binders[i].binder_ID%>>
+                    <input id="binder_Name"  name="binder_Name" type="hidden" value="<%= binders[i].binder_Name%>">
+                    <input type="submit" value="OPEN" class="organizeButton-lineItem" title="Click here to open the binder and view its contents.">
+                </form>
 
-        <div class="pricing-table">
-            <div class="pricing-table-header">
-                <h3>Deborah Jones</h3>
-                <h3>2015</h3>
+
             </div>
-            <div class="pricing-table-space"></div>
-            <div class="pricing-table-features">
-                <p><strong>Applying for:</strong> Tenure</p>
-            </div>
-            <div class="pricing-table-sign-up">
-                <p><a href="">Evaluate!</a></p>
+            <div class="submissionLine-contentBox-whole">
             </div>
         </div>
+        <% } %>
+
+
     </div>
 </div>
 </body>

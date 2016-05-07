@@ -1,0 +1,93 @@
+<!----------------------------------
+// Filename: organizerView.html
+// Author: Tara Hanson and Sterling Miller
+// Date: May 3, 2016
+// Desc: The purpose of this page is to allow organizers
+		 to view which evaluators are currently members
+		 of their committee.
+--------------------------------------->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OrganizerView</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/submissionLines.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/alwaysOpenSidebar.css" rel="stylesheet">
+    <link href="/stylesheets/adminTable.css" rel="stylesheet" type="text/css">
+    <script src="/javascript/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="/javascript/alwaysOpenSidebar.js" type="text/javascript"></script>
+</head>
+<body>
+
+<!-------------------------------------------
+This is the code that handles the navigation bar.
+--------------------------------------->
+<div id="NavBar">
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
+            <liCurrent><a href="/organizer">Organizer</a></liCurrent>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id="contentAndSidebarRegion">
+    <div id='cssMenu'>
+        <ul>
+            <li class='active has-sub'><a href='#'><span>Organize Binders<span></a>
+                <ul>
+                    <li class='last'><a href='/organizer'><span>Organize Applicant Binders</span></a></li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Edit Committees<span></a>
+                <ul>
+                    <li class='last'><a href='/organizerEdit'><span>Edit Evaluators & Committees</span></a></li>
+                </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>View Current<span></a>
+                <ul>
+                    <li class='last'><a href='/organizerView'><span>View Evaluators & Committees</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id=contentPDFViewerOnly>
+        <!-------------------------------------------
+        This is the code that handles the display table.
+        This table shows which evaluators are in all of
+        the committees that the current user is an organizer of.
+        --------------------------------------->
+        <table id="AssignmentTable">
+            <tr>
+                <th>Committees</th>
+                <th>Evaluators</th>
+            </tr>
+            <% for(var i = 0; i < organizersCommittees.length ; i++) { %>
+            <tr>
+                <td><%= organizersCommittees[i].comm_Name %></td>
+                <td>
+                    <% for(var j = 0; j < committeeEvaluators.length ; j++) { %>
+                    <% if (committeeEvaluators[j].comm_Name == organizersCommittees[i].comm_Name) { %>
+                    <%= committeeEvaluators[j].person_First_Name %> <%= committeeEvaluators[j].person_Last_Name %> <br>
+                    <% } %>
+                    <% } %>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+
+    </div>
+</div>
+
+
+</body>
+</html>

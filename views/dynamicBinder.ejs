@@ -1,0 +1,106 @@
+<!--
+file:	dynamicBinder
+author: Eric Jobes
+date:	31 Mar 2016
+desc:   Dynamically retrieve binders from database
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Binder</title>
+    <link href="/stylesheets/layout.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/menu.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/submissionLines.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id=navBar>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <liCurrent><a href="/dynamicBinder">My Binders</a></liCurrent>
+            <li><a href="/organizer">Organizer</a></li>
+            <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/logout"><%= user.username%>, Log Out</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id=contentRegion>
+        <div class=container>
+            <div class="submissionLine">
+                <div class="submissionLine-contentBox-whole">
+                    Create New Binder
+                </div>
+                <div class="submissionLine-contentBox-rightHalf">
+                    <form action="/createNewBinder" style="padding-top:8px"method="post" >
+                        Name your new binder: <input name="binder_Name" id="binder_Name" >
+                        <input id="binder_ID_Post" type="submit" value="CREATE" class="organizeButton-lineItem" title="Click here to create a new binder. If you do not name it, you can do so below after it is created.">
+                    </form>
+
+                    <div class="submissionLine-contentBox-whole">
+                    New binders appear on top in descending order by time created.
+                </div>
+                </div>
+            </div>
+            <!-- show new binders on top by starting at binders.length-1, go to 0 -->
+            <% for(var i = binders.length-1; i >=0 ; i--) { %>
+                <div class="submissionLine">
+                    <div class="submissionLine-contentBox-whole">
+                        <form action="/dynamicBinderRENAME" style="padding-top:8px"method="post" >
+                            <input name="binder_Name" id="binder_Name" value="<%= binders[i].binder_Name%>" >
+                            <input id="binder_ID" type="hidden" name="binder_ID" value=<%= binders[i].binder_ID%>>
+                            <input id="binder_ID_Post" type="submit" value="RENAME" class="organizeButton-lineItem">
+                        </form>
+                        Binder Name: <%= binders[i].binder_Name%>
+                        <br>
+                        Binder Status: <%= binders[i].submitted_Status%>
+                        <% var submitted_Status_String = binders[i].submitted_Status%>
+                        <% var submitted_Status_String = submitted_Status_String.trim()%>
+                        <% if (submitted_Status_String == "Submitted") {%>
+                            <img src="images/submitted_Icon.png" height="15px" width="15px" style="border-color:lawngreen; border-width:2px; border-style: solid; margin-top:5px">
+                        <%}%>
+
+                    </div>
+                    <div class="submissionLine-contentBox-leftHalf">
+                    </div>
+                    <div class="submissionLine-contentBox-rightHalf">
+                        <!-- OLD BUTTON HERE -->
+                        <!--<button class="organizeButton-lineItem" onclick="window.location.href='/Binder'">OPEN</button> -->
+
+                        <form action="/dynamicBinderCLONE" style="padding-top:8px"method="post" class="formClass">
+                            <input name="dynamicBinderAction" type="hidden" value="CLONE" >
+                            <input id="binder_ID" type="hidden" name="binder_ID" value=<%= binders[i].binder_ID%>>
+                            <input name="binder_Name" id="binder_Name" type="hidden" value="<%= binders[i].binder_Name%>" >
+                            <input type="submit" value="CLONE" class="organizeButton-lineItem" style="background-color:rgb(20,180,150)" title="Click here to copy your binder and its contents.">
+                        </form>
+                        |
+                        <form action="/dynamicBinderOPEN" style="padding-top:8px"method="post" class="formClass">
+                            <input name="dynamicBinderAction" type="hidden" value="OPEN" >
+                            <input id="binder_ID" type="hidden" name="binder_ID" value=<%= binders[i].binder_ID%>>
+                            <input id="binder_Name"  name="binder_Name" type="hidden" value="<%= binders[i].binder_Name%>">
+                            <input type="submit" value="OPEN" class="organizeButton-lineItem" title="Click here to open the binder and view its contents.">
+                        </form>
+                        |
+                        <form action="/removeApplicantBinder" style="padding-top:8px"method="post" class="formClass">
+                            <input name="dynamicBinderAction" type="hidden" value="DELETE" >
+                            <input id="binder_ID" type="hidden" name="binder_ID" value=<%= binders[i].binder_ID%>>
+                            <input id="binder_Name"  name="binder_Name" type="hidden" value="<%= binders[i].binder_Name%>">
+                            <input type="submit" value="DELETE" class="submitButton-lineItem" onclick="return confirm('Are you sure you want to delete this binder?')" title="Click here to delete your binder. You will receive a warning and option to keep the binder if you click this.">
+                        </form>
+
+                    </div>
+                    <div class="submissionLine-contentBox-whole">
+                    </div>
+                </div>
+            <% } %>
+
+
+        </div>
+    </div>
+</body>
+</html>

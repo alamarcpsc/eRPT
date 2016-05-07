@@ -22,17 +22,18 @@ desc:
     <nav>
         <ul>
             <li><a href="/home">Home</a></li>
-            <liCurrent><a href="/myBinder">My Binder</a></liCurrent>
+            <liCurrent><a href="/dynamicBinder">My Binders</a></liCurrent>
             <li><a href="/organizer">Organizer</a></li>
             <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
             <li><a href="/logout"><%= user.username%>, Log Out</a></li>
             <li><a href="/help">Help</a></li>
         </ul>
     </nav>
 </div>
 
-<div id="ContentAndSidebarRegion">
-    <div id='cssmenu'>
+<div id="contentAndSidebarRegion">
+    <div id='cssMenu'>
         <ul>
             <li class='active has-sub'><a href='#'><span>Dean's Recommendation</span></a>
                 <ul>
@@ -106,7 +107,16 @@ desc:
             </li>
         </ul>
     </div>
-    <p class="center">There are no files uploaded yet.</p>
+    <div id="contentPDFWithAnno">
+        <p class="center">There are no files uploaded yet.</p>
+    </div>
+    <div id="contentAnnotation">
+        <div id="actionsRegion">
+            <button class="submitButton-annotation">SUBMIT</button>
+        </div>
+    </div>
+    <div id="terminatorDiv">
+    </div>
 </div>
 </body>
 </html>

@@ -19,55 +19,127 @@ desc:
     <nav>
         <ul>
             <li><a href="/home">Home</a></li>
-            <li><a href="/myBinder">My Binder</a></li>
+            <li><a href="/dynamicBinder">My Binders</a></li>
             <li><a href="/organizer">Organizer</a></li>
             <li><a href="/evaluation">Evaluation</a></li>
+            <li><a href="/admin">Admin</a></li>
             <li><a href="/logout"><%= user.username%>, Log Out</a></li>
             <liCurrent><a href="/help">Help</a></liCurrent>
         </ul>
     </nav>
 </div>
 
-<div id=ContentRegion>
-    <div id=ContentNormal>
-        <center><img src="/images/eRPT_2.2.png" width=124px height=71px"></center>
-        <div id="IntroParagraph">
+<!----------------------------------
+This entire content region below is designated
+for helping instruct the user using text on
+how to navigate the eRPT site.
+--------------------------------------->
+<div id=contentRegion>
+    <div id=contentNormal>
+        <center><img src="images/eRPT_2.2.png" width=124px height=71px"></center>
+        <div id="introParagraph">
             <center><h1>Welcome to the Help Page!</h1></center>
 
             <h2>Introduction</h2>
             <p>Learning any new web application can be tricky, the goal of this page is to make the transition as seamless as possible for new users.
                 Below you will find various documentation on how to create a binder, add files to your binder, submit a binder for review as well as other functionalities.
-                Depending on what type of user you are (Applicant, Evaluator or Organizer) the various sections will be very helpful.</p>
+                Depending on what type of user you are (Applicant, Evaluator, or Organizer) the various sections will be very helpful.</p>
+            <hr>
+
+
+            <h2>Who is eRPT for?</h2>
+            <p>Electronic Reappointment Promotion and Tenure is a system designed to be used by faculty and staff members
+                at Gonzaga University.</p>
             <hr>
 
             <h2>Creating a Binder</h2>
-            <p>In order to create a binder, please click on the My Binder tab at the top of the page.
-                You can also do this by clicking <a href="/myBinder">My Binder</a>
-                Once this is done, you will be able to create a new binder, or select from previous binders you have created in past years. For detailed instructions on
-                how to create a binder and what contents needed to be added to a specific binder, you can visit the binder help page by clicking
-                this <a href="/help">Help</a>
+            <p>In order to create a binder, please click on the My Binders tab at the top of the page.
+                You can also do this by clicking <a href="dynamicBinder">here</a>. Once this is done, you will be able to create a new binder, or select from previous binders you have created in past years.
+                If you are starting a new binder, you can open up the side bar to add various new files to you binder. Note, that currently
+                all files added to the binder must be PDF files. If you are unsure how to make a PDF file, please see the Making a PDF section below. Click on Add File to select a file on your computer to add to your digital binder.
+                In the sidebar dropdown menu, you can delete PDF files from this section of your binder.
+                Once your binder is complete, you can submit it. Once a binder is submitted, the binder cannot be changed or edited.</p>
+            <hr>
+
+            <h2>Making a PDF</h2>
+            <p>
+                Most applications allow users to save files as a PDF from the File -> Save As option.
+                <br><br>
+                On PCs, a pop up will present itself with the "File name" and "Save as type" fields near the bottom of the window.
+                Enter a file name then select 'PDF (*.pdf)' from the "Save as type" field if it is available. If there is no listing for PDFs in this list, the application you are using may not support saving the document in the PDF format.
+                <br><br>
+                Note: On a PC, you may need to first select the location where you would like to store your file before selecting the type 'PDF'.
+                <br><br>
+                On Macs, a pop up will present itself with the "Save As" field at the top of the window and "Format" near the bottom of the window. Enter a file name in the "Save As" field, then select 'PDF' from the "Format" field if it is available.
+                If there is no listing for PDFs in this list, the application you are using may not support saving the document in the PDF format.
+                <br><br>
+            </p>
             <hr>
 
             <h2>Organizing a Binder</h2>
             <p>If you are accessing the site as an Organizer you can select various binders that have been submitted
-                <a href="/organizer">Organizer</a> You can also navigate to the proper page via the tabs above, and selecting workbench.
-                These binders represented submitted faculty binders that are ready to passed on
+                <a href="organizer">here</a>. You can also navigate to the proper page via the tabs above, and selecting 'Organizer'.
+                These binders represent submitted faculty binders that are ready to passed on
                 to the proper evaluators within the eRPT site. If there is a binder that you are expecting to be there but is not, it is
-                possible that the binder has not yet been submitted for evaluation by the faculty member who it belongs to.</p>
+                possible that the binder has not yet been submitted for evaluation by the faculty member who it belongs to. Once a binder has been passed
+                on to the you will be able to add supplemental material to the binder. Current files placed in the binder will be viewable to
+                you as an Organizer. You cannot deleted files submitted by the Applicant, but will be able to add additional materials. Once, the binder
+                you are organizing is ready to be evaluated, you can select submit, to a particular committee that will review this binder for
+                reappointment, promotion or tenure. Once a binder is submitted, the binder cannot be changed or edited.</p>
             <hr>
 
             <h2>Evaluating a Binder</h2>
             <p>If you are accessing the site as an Evaluator you can select various binders that are available for evaluation
-                <a href="/evaluation">Evaluation</a> You can also navigate to the proper page via the tabs above by selecting Evaluate.
+                <a href="evaluation">here</a>. You can also navigate to the proper page via the tabs above by selecting Evaluation.
                 These binders represented submitted faculty binders that are ready to evaluated for various positions.
                 If there is a binder that you are expecting to be there but is not, it is
                 possible that the binder has not yet been submitted for evaluation by the faculty member who it belongs to, or an Organizer
-                has not yet passed it on the all the evaluators that will be viewing the binder.</p>
+                has not yet passed it on to all the Evaluators that will be viewing the binder. Once a binder has been submitted to a particular
+                committee by the Organizer, it will be viewable to you, if you are a designated Evaluator in the eRPT process. You may then add annotations
+                to a binder that is view format, comments will then be saved for later viewing only by the original Evaluator who created them. When a
+                recommendation is reached by the committee, the binder's confidential material is permanently deleted from the web application.</p>
             <hr>
             <h2>Additional Information</h2>
-            <p>If this section does not answer your question, then there are additional resources available to you.</p>
+            <p>If this section does not answer your question, then there are additional resources available to you. Please contact Gonzaga's IT Support via email at
+                techsupport@gonzaga.edu or by phone at (509) 313-5550.</p>
+            <hr>
+            <div style="text-align:center">
+                <p><b>Development Team</b></p>
+                <p>RJ Riley</p>
+                <p>Adam La Mar</p>
+                <p>Tara Hanson</p>
+                <p>Eric Jobes</p>
+                <p>Sterling Miller</p>
+                <div style="text-align:center">
+                    <p><b>Gonzaga University - School of Engineering and Applied Science - CPSC 491/492 - RuPeRT - All Rights Reserved </b></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 </body>
+
 </html>
+
+<script>
+    function myBinderRedirect() {
+        window.location.replace("myBinder.html");
+        return false;
+    }
+
+    function binderHelpRedirect(){
+        window.location.replace("binderHelp.html");
+        return false;
+    }
+
+    function workbenchRedirect(){
+        window.location.replace("organizer.html");
+        return false;
+    }
+
+    function evaluationRedirect(){
+        window.location.replace("evaluation.html");
+        return false;
+    }
+</script>
