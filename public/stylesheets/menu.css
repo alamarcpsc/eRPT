@@ -1,6 +1,8 @@
 /*
-authors: Eric Jobes & Richard Riley
-date:	 2/13/2016
+file:	menu.css
+author: Eric Jobes (with minor changes by RJ Riley)
+date:	2/13/2016
+desc:	CSS for the top menu bar across all pages in eRPT
 */
 
 nav ul {
@@ -22,7 +24,7 @@ nav ul li {
 	text-align:center;
 	line-height:43px;
 	font-family: Tahoma, Geneva, sans-serif;
-	font-size:17px;	
+	font-size:17px;
 }
 
 nav ul li a
@@ -49,7 +51,7 @@ nav ul li:hover
 nav ul li:hover a
 {
 	display:block;
-	color:#222222;
+	color:#ffffff;
 	height:100%;
 }
 
@@ -91,6 +93,6 @@ nav ul liCurrent:hover
 nav ul liCurrent:hover a
 {
 	display:block;
-	color:#222222;
+	color:#ffffff;
 	height:100%;
 }

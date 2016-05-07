@@ -1,4 +1,9 @@
- 
+/*
+file:	table.css
+author:	Eric Jobes
+date:	?
+desc:	CSS for older style content management pages
+*/
 .container {
 	display: inline-flex;
 	flex-wrap: wrap;
@@ -8,7 +13,7 @@
 
 .pricing-table {
     width: 260px;
-    margin: 10px 16px 10px 16px;
+    margin: 5px 8px 5px 8px;
     background: #f8f8f8;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
@@ -26,7 +31,7 @@
 .pricing-table strong { font-weight: 700; color: #3d3d3d; }
 
 .pricing-table-header {
-    padding: 10px 0 15px 0;
+    padding: 1px 0 1px 0;
     background: #3d3d3d;
     -moz-border-radius-topleft: 6px;
     -moz-border-radius-topright: 6px;
@@ -48,7 +53,8 @@
 .pricing-table-space { height: 10px; }
 
 .pricing-table-text {
-    margin: 15px 30px 0 30px;    padding: 0 10px 15px 10px;
+    margin: 5px 10px 0 10px;
+    padding: 0 100px 15px 10px;
     border-bottom: 1px solid #ddd;
     text-align: left;
     line-height: 30px;

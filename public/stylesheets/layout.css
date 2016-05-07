@@ -1,3 +1,10 @@
+/*
+file:	layout.css
+author:	RJ Riley
+date:	3/17/16 (modified)
+desc:	Serves as the master layout file for pages on eRPT
+*/
+
 html, body {
 	margin: 0px;
 	padding: 0px;
@@ -8,58 +15,102 @@ html, body {
 	font-family: Tahoma, Geneva, sans-serif;
 }
 
-#ContentAndSidebarRegion {
+#contentAndSidebarRegion {
 	margin-right:12px;
-	min-width:888px;
-	height:inherit;
+	min-width: -webkit-calc(100% - 12px);
+	min-width: -moz-calc(100% - 12px);
+	min-width: calc(100% - 12px);
+	height: calc(100% - 48px);
 	background-color:#FFFFFF;
+	overflow: auto;
 }
 
-#ContentRegion {
+#contentRegion {
 	margin-left: 12px;
 	margin-right: 12px;
-	min-height:100%;
-	min-width: 876px;
+	min-height: -webkit-calc(100% - 48px);
+	min-height: -moz-calc(100% - 48px);
+	min-height: calc(100% - 48px);
+	width: -webkit-calc(100% - 24px);
+	width: -moz-calc(100% - 24px);
+	width: calc(100% - 24px);
 	background-color:#FFFFFF;
+	overflow: auto;
 }
 
-#ContentNormal{
+#contentNormal{
 	padding: 12px;
 }
 
-#ContentPDFViewerOnly {
+#contentPDFViewerOnly,
+#contentPDFViewerOnly0,
+#contentPDFViewerOnly1,
+#contentPDFViewerOnly2,
+#contentPDFViewerOnly3,
+#contentPDFViewerOnly4,
+#contentPDFViewerOnly5,
+#contentPDFViewerOnly6,
+#contentPDFViewerOnly7,
+#contentPDFViewerOnly8,
+#contentPDFViewerOnly9,
+#contentPDFViewerOnly10 {
 	margin-left: 300px;
+	width: -webkit-calc(100% - 300px);
+	width: -moz-calc(100% - 300px);
+	width: calc(100% - 300px);
 	height: inherit;
 	border: none;
 }
 
-#ContentPDFWithAnno {
-	margin-left:300px;
-	height:inherit;
-	border:none;
-	width:388px;
+#contentPDFWithAnno,
+#contentPDFWithAnno0,
+#contentPDFWithAnno1,
+#contentPDFWithAnno2,
+#contentPDFWithAnno3,
+#contentPDFWithAnno4,
+#contentPDFWithAnno5,
+#contentPDFWithAnno6,
+#contentPDFWithAnno7,
+#contentPDFWithAnno8,
+#contentPDFWithAnno9,
+#contentPDFWithAnno10
+{
+	height: 100%;
+	border: none;
+	width: calc((100% - 300px) - 250px);
+	float: left;
 }
 
-#ContentAnnotation {
-	margin-left:688px;
-	width:200px;
+#contentAnnotation {
+	float: right;
+	width: 250px;
 }
 
-#IntroParagraph {
+#introParagraph {
 	margin: auto;
 	color:#333333;
 	width:75%;
 }
 
+#actionsRegion {
+	display: block;
+	padding: 10px;
+	text-align: center;
+}
+
+#terminatorDiv {
+	clear: both;
+}
+
+#annoFromDB{
+	text-align: left;
+}
+
 iframe {
-	border:0px;
-	width:100%;
-	height:inherit;
-	min-height:621px;
-	position:relative;
-	display:none;
-	/*NEED TO FIGURE OUT HOW TO DYNAMICALLY PICK THE FIRST IFRAME
-	TO HAVE display:inline; vs. none. Opening works brilliantly.*/
+	border: 0px;
+	width: 100%;
+	height: 100%;
+	float: left;
 }
 
 h1 {
@@ -76,7 +127,7 @@ h3 {
 }
 
 table {
-	background-color:#f1f1f1;
+	background-color:rgba(255,255,255,0);
 	table-layout:fixed;
 	width:100%;
 }
@@ -86,12 +137,127 @@ td {
 	word-wrap:break-word;
 }
 
-button {
+.link-sidebar {
+
+}
+
+#inputFileField {
+	width: 280px;
+}
+
+#uploady {
+	width: 276px;
+	padding: 10px;
+	background-color: rgb(223, 223, 223);
+	border: solid 2px;
+	border-color: #0b2a50;
+}
+
+.uploadButton-sidebar {
+	text-align: center;
 	background-color: #777777;
 	color: #FFFFFF;
-	font-size:14px;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: 3px;
+	border:none;
+	width: 62px;
+}
+.editButton-sidebar {
+	float: left;
+	background-color: #777777;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: 3px;
+	border:none;
+	width: 62px;
+
+}
+
+.removeButton-sidebar {
+	float: right;
+	background-color: #777777;
+	color: #FFFFFF;
+	font-size: 14px;
 	text-decoration: none;
 	padding: 4px;
 	border-radius: 3px;
 	border: none;
+	width: 62px;
+}
+
+.saveButton-annotation {
+	width: 85%;
+	max-width: 146px;
+	background-color: #5fa2db;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: 3px;
+	border: none;
+}
+
+
+.button-annotation {
+	width: 85%;
+	max-width: 146px;
+	background-color: #993333;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: 3px;
+	border: none;
+	white-space:normal;
+
+}
+
+.submitButton-lineItem {
+	width: 90px;
+	border-radius: 3px;
+	background-color: #993333;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 4px;
+	border: none;
+}
+
+.organizeButton-lineItem {
+	width: 90px;
+	border-radius: 3px;
+	background-color: #0b2a50;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 4px;
+	border: none;
+}
+
+.formClass {
+	display: inline-block;
+	width: 90px;
+	border-radius: 3px;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 4px;
+	border: none;
+
+}
+
+.annotationSpace {
+	width: 224px;
+	min-height: 582px;
+	resize: none;
+	padding: 2px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	border-radius: 3px;
+	border: 1px solid #c7c7c7;
 }

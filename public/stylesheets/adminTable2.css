@@ -1,0 +1,44 @@
+table {
+    margin:6px;
+    float: left;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+table#AssignmentTable2 tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table#AssignmentTable2 tr:nth-child(odd) {
+    background-color:#fff;
+}
+
+table#AssignmentTable2 th	{
+    background-color: #003f72;
+    color: white;
+}
+
+.scroll{
+    overflow:scroll;
+    height:100px;
+}
+
+.button {
+    background-color: #003f72;
+    color: #FFFFFF;
+    font-size:14px;
+    text-decoration: none;
+    padding: 4px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 3px;
+    border-width: 1px;
+}

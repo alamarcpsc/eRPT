@@ -1,9 +1,11 @@
 /*
+file:	alwaysOpenSidebar.css
 author:	Eric Jobes
 date:	?
+desc:	CSS for 'tabbed' sidebar
 */
 
-#cssmenu {
+#cssMenu {
   font-family: sans-serif;
   text-align: left;
   line-height: 1;
@@ -11,31 +13,29 @@ date:	?
   height: auto;
   float:left;
 }
-.align-right {
-  float: right;
-}
-#cssmenu ul {
+
+#cssMenu ul {
   margin: 0;
   padding: 0;
   list-style: none;
   display: block;
 }
-#cssmenu ul li {
+#cssMenu ul li {
   position: relative;
   margin: 0;
   padding: 0;
 }
-#cssmenu ul li a {
+#cssMenu ul li a {
   text-decoration: none;
 }
-#cssmenu > ul > li > a {
+#cssMenu > ul > li > a {
   color: #dddddd;
   text-transform: uppercase;
   display: block;
   padding: 17px;
   border-top: 1px solid #a0a0a0;
   background: #222222;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   font-size: 16px;
   font-weight: 300;
   -webkit-transition: all 0.25s ease-in;
@@ -45,21 +45,21 @@ date:	?
   transition: all 0.25s ease-in;
   position: relative;
 }
-#cssmenu > ul > li:first-child > a {
+#cssMenu > ul > li:first-child > a {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-#cssmenu > ul > li:last-child > a {
+#cssMenu > ul > li:last-child > a {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-#cssmenu > ul > li:hover > a,
-#cssmenu > ul > li.open > a,
-#cssmenu > ul > li.active > a {
+#cssMenu > ul > li:hover > a,
+#cssMenu > ul > li.open > a,
+#cssMenu > ul > li.active > a {
   background: #0b2a50;
   color: #ffffff;
 }
-#cssmenu ul > li.has-sub > a::after {
+#cssMenu ul > li.has-sub > a::after {
   content: "";
   position: absolute;
   display: block;
@@ -80,7 +80,7 @@ date:	?
   -o-transition: all .2s ease;
   transition: all .2s ease;
 }
-#cssmenu ul > li.has-sub > a::before {
+#cssMenu ul > li.has-sub > a::before {
   content: "";
   position: absolute;
   display: block;
@@ -100,7 +100,7 @@ date:	?
   -o-transition: all .2s ease;
   transition: all .2s ease;
 }
-#cssmenu ul > li.has-sub::after {
+#cssMenu ul > li.has-sub::after {
   content: "";
   display: block;
   position: absolute;
@@ -113,34 +113,35 @@ date:	?
   top: 24.5px;
   pointer-events: none;
 }
-#cssmenu ul > li:hover::after,
-#cssmenu ul > li.active::after,
-#cssmenu ul > li.open::after {
+#cssMenu ul > li:hover::after,
+#cssMenu ul > li.active::after,
+#cssMenu ul > li.open::after {
   border-top-color: #ffffff;
 }
-#cssmenu ul > li.has-sub.open > a::after {
+#cssMenu ul > li.has-sub.open > a::after {
   opacity: 1;
   bottom: -13px;
 }
-#cssmenu ul > li.has-sub.open > a::before {
+#cssMenu ul > li.has-sub.open > a::before {
   opacity: 1;
   bottom: -12px;
 }
 
-#cssmenu ul ul {
+#cssMenu ul ul {
   display: none;
 }
-#cssmenu ul ul li {
+#cssMenu ul ul li {
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
 }
-#cssmenu ul ul li a {
-  background: #f1f1f1;
+#cssMenu ul ul li a {
+  background-color:rgba(255,255,255,0);
+  border: none;
   display: block;
   position: relative;
-  font-size: 15px;
-  padding: 14px 17px;
-  border-bottom: 1px solid #dddddd;
+  font-size: 14px;
+  text-align:left;
+  padding: 8px 4px;
   color: #777777;
   font-weight: 300;
   -webkit-transition: all 0.25s ease-in;
@@ -149,34 +150,34 @@ date:	?
   -o-transition: all 0.25s ease-in;
   transition: all 0.25s ease-in;
 }
-#cssmenu ul ul li:first-child > a {
+#cssMenu ul ul li:first-child > a {
   padding-top: 18px;
 }
-#cssmenu ul ul ul li {
+#cssMenu ul ul ul li {
   border: 0;
 }
-#cssmenu ul ul li:hover > a,
-#cssmenu ul ul li.open > a,
-#cssmenu ul ul li.active > a {
+#cssMenu ul ul li:hover > a,
+#cssMenu ul ul li.open > a,
+#cssMenu ul ul li.active > a {
   background: #e4e4e4;
   color: #666666;
 }
-#cssmenu ul ul > li.has-sub > a::after {
+#cssMenu ul ul > li.has-sub > a::after {
   border-top: 13px solid #dddddd;
 }
-#cssmenu ul ul > li.has-sub > a::before {
+#cssMenu ul ul > li.has-sub > a::before {
   border-top: 13px solid #e4e4e4;
 }
-#cssmenu ul ul ul li a {
+#cssMenu ul ul ul li a {
   padding-left: 30px;
 }
-#cssmenu ul ul > li.has-sub::after {
+#cssMenu ul ul > li.has-sub::after {
   top: 18.5px;
   border-width: 6px;
   border-top-color: #777777;
 }
-#cssmenu ul ul > li:hover::after,
-#cssmenu ul ul > li.active::after,
-#cssmenu ul ul > li.open::after {
+#cssMenu ul ul > li:hover::after,
+#cssMenu ul ul > li.active::after,
+#cssMenu ul ul > li.open::after {
   border-top-color: #666666;
 }

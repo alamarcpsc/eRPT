@@ -1,0 +1,53 @@
+/*
+// Filename: adminTable.css
+// Author: Tara Hanson
+// Date: March 17, 2016
+// Desc: Stylizing the tables for the admin and
+//		 organizer pages.
+*/
+
+table {
+    margin:6px;
+    float: left;
+    width: calc(100% - 12px);
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+table#AssignmentTable tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table#AssignmentTable tr:nth-child(odd) {
+    background-color:#fff;
+}
+
+table#AssignmentTable th	{
+    background-color: #003f72;
+    color: white;
+}
+
+.scroll{
+    overflow:scroll;
+    height:100px;
+}
+
+.button {
+    background-color: #003f72;
+    color: #FFFFFF;
+    font-size:14px;
+    text-decoration: none;
+    padding: 4px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 3px;
+    border-width: 1px;
+}
